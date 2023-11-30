@@ -4,14 +4,13 @@ using UnityEngine.UI;
 
 public class TorchControl : MonoBehaviour
 {
-    public Light myLight;
+    public Light torchLight;
     public GameObject onoffText;
     private bool isTextEnabled = false;
 
     void Start()
     {
-        // Ensure that the light component is assigned in the Inspector
-        if (myLight == null)
+        if (torchLight == null)
         {
             Debug.LogError("Light component not assigned!");
         }
@@ -39,7 +38,7 @@ public class TorchControl : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             // Toggle the light state
-            myLight.enabled = !myLight.enabled;
+            torchLight.enabled = !torchLight.enabled;
         }
     }
 

@@ -12,6 +12,7 @@ public class TimeInteract : Interactable
     public AudioClip doorbangSound;
     private AudioSource audioSource;
     public AudioSource backgroundAudio;
+    public AudioSource upstairsAudio;
     public float minVolume = 0.1f;
     public float maxVolume = 1.0f;
 
@@ -25,6 +26,11 @@ public class TimeInteract : Interactable
         if (backgroundAudio != null)
         {
             backgroundAudio.Stop();
+        }
+
+        if (upstairsAudio != null)
+        {
+            upstairsAudio.Stop();
         }
     }
 
@@ -54,6 +60,7 @@ public class TimeInteract : Interactable
         timeInteractText.SetActive(false);
 
         StartBackgroundAudio();
+        StartUpstairsAudio();
     }
 
     public override void OnLoseFocus()
@@ -66,17 +73,39 @@ public class TimeInteract : Interactable
         if (backgroundAudio != null && !backgroundAudio.isPlaying)
         {
             backgroundAudio.Play();
-            // Start the volume randomization
+            
             InvokeRepeating("RandomizeBackgroundVolume", 2.0f, 2.0f);
         }
     }
 
+
     private void RandomizeBackgroundVolume()
     {
-        // Generate a random volume value between minVolume and maxVolume
+        
         float randomVolume = Random.Range(minVolume, maxVolume);
 
-        // Set the backgroundAudio volume to the random value
+        
         backgroundAudio.volume = randomVolume;
     }
+
+    public void StartUpstairsAudio()
+    {
+        if (upstairsAudio != null && !upstairsAudio.isPlaying)
+        {
+            upstairsAudio.Play();
+
+            //        InvokeRepeating("RandomizeUpstairsVolume", 2.0f, 2.0f);
+            //    }
+        }
+    }
+
+    //private void RandomizeUpstairsVolume()
+    //{
+        
+    //    float randomVolume = Random.Range(minVolume, maxVolume);
+
+     
+    //    upstairsAudio.volume = randomVolume;
+    //}
+
 }

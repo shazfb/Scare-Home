@@ -22,34 +22,36 @@ public class Door : Interactable
 
     public override void OnInteract()
     {
-
         if (canBeInteractedWith)
         {
-            isOpen = !isOpen;
-
-            Vector3 doorTransformDirection = transform.TransformDirection(Vector3.forward);
-            Vector3 playerTransformDirection = FirstPersonController.instance.transform.position - transform.position;
-            float dot = Vector3.Dot(doorTransformDirection, playerTransformDirection);
-
-            anim.SetFloat("dot", dot);
-            anim.SetBool("isOpen", isOpen);
-
-            if (boxColliderGameObject != null)
-            {
-                BoxCollider boxCollider = boxColliderGameObject.GetComponent<BoxCollider>();
-                if (boxCollider != null)
+            if (canBeInteractedWith)
                 {
-                    boxCollider.enabled = !isOpen;
-                }
-                else
-                {
-                    Debug.LogError("BoxCollider component not found on the specified GameObject.");
-                }
-            }
+                    isOpen = !isOpen;
 
-            OpenDoorText.SetActive(false);
+                    Vector3 doorTransformDirection = transform.TransformDirection(Vector3.forward);
+                    Vector3 playerTransformDirection = FirstPersonController.instance.transform.position - transform.position;
+                    float dot = Vector3.Dot(doorTransformDirection, playerTransformDirection);
 
-            StartCoroutine(AutoClose());
+                    anim.SetFloat("dot", dot);
+                    anim.SetBool("isOpen", isOpen);
+
+                    if (boxColliderGameObject != null)
+                    {
+                        BoxCollider boxCollider = boxColliderGameObject.GetComponent<BoxCollider>();
+                        if (boxCollider != null)
+                        {
+                            boxCollider.enabled = !isOpen;
+                        }
+                        else
+                        {
+                            Debug.LogError("BoxCollider component not found on the specified GameObject.");
+                        }
+                    }
+
+                    OpenDoorText.SetActive(false);
+
+                    StartCoroutine(AutoClose());
+                            }
         }
     }
 
@@ -86,6 +88,7 @@ public class Door : Interactable
             }
         }
     }
+
 
     private void Animator_LockInteraction()
     {
