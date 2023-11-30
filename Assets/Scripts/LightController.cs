@@ -6,7 +6,7 @@ public class LightController : MonoBehaviour
 {
     public TextMeshProUGUI timeText;
     public Light[] lights;
-    public float dimmingFactor = -1f;
+    public float dimmingFactor = 0.01f;
     public int dimStartTime = 20; 
     public int restoreStartTime = 6; 
 
