@@ -4,9 +4,10 @@ using UnityEngine;
 public class FlickerControl : MonoBehaviour
 {
     public bool isFlickering = false;
-    public int flickerCount = 3; // Adjust the maximum number of flickers allowed
-    public float timeBetweenFlickers = 0.5f; // Adjust the time between flickers
+    public int flickerCount = 3; // max number of flickers allowed
+    public float timeBetweenFlickers = 0.5f; // time between flickers
     private int currentFlickerCount;
+
 
     void Start()
     {
@@ -23,7 +24,7 @@ public class FlickerControl : MonoBehaviour
                 currentFlickerCount++;
             }
 
-            yield return new WaitForSeconds(Random.Range(1f, 10f)); // Adjust the range for the time delay between flickers
+            yield return new WaitForSeconds(Random.Range(1f, 10f)); // time delay between flickers
         }
     }
 
@@ -31,7 +32,7 @@ public class FlickerControl : MonoBehaviour
     {
         isFlickering = true;
 
-        int randomFlickerCount = Random.Range(1, 6); // Adjust the range for the random number of flickers
+        int randomFlickerCount = Random.Range(1, 6); 
 
         for (int i = 0; i < randomFlickerCount; i++)
         {
@@ -44,6 +45,6 @@ public class FlickerControl : MonoBehaviour
         isFlickering = false;
 
         yield return new WaitForSeconds(timeBetweenFlickers);
-        currentFlickerCount = 0; // Reset the flicker count after the specified time
+        currentFlickerCount = 0; 
     }
 }
