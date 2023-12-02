@@ -42,6 +42,10 @@ public class TorchControl : MonoBehaviour
         }
     }
 
+    public bool IsLightEnabled()
+    {
+        return torchLight.enabled;
+    }
     IEnumerator EnableAndDisableText()
     {
         // Enable on-screen text

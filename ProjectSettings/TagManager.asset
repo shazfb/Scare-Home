@@ -12,6 +12,7 @@ TagManager:
   - SnapObject
   - TimeKey
   - Key
+  - ghost
   layers:
   - Default
   - TransparentFX
