@@ -10,7 +10,6 @@ public class Dialogue : MonoBehaviour
 
     private int index;
 
-    // Set this flag to true when the dialogue panel is active
     private bool inDialogue { get; set; }
 
     public bool IsInDialogue()
@@ -42,7 +41,7 @@ public class Dialogue : MonoBehaviour
 
     public void StartDialogue()
     {
-        inDialogue = true; // Set the InDialogue flag to true when the dialogue starts
+        inDialogue = true; 
         index = 0;
         StartCoroutine(TypeLine());
     }
@@ -72,10 +71,7 @@ public class Dialogue : MonoBehaviour
 
     private void EndDialogue()
     {
-        inDialogue = false; // Set the InDialogue flag to false when the dialogue ends
-
-        // You can remove the attempt to access npcAnimator here, as it's managed in NPCInteraction script
-
+        inDialogue = false; 
         gameObject.SetActive(false);
     }
 }

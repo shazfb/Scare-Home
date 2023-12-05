@@ -8,10 +8,8 @@ public class ObjectGrabbable : Interactable
     private Transform objectGrabPointTransform2;
     private FirstPersonController firstPersonController;
 
-    //reference to the text GameObject
     public GameObject interactText;
 
-    //public variable to specify the tag of objects to snap to
     public string snapToTag = "SnapObject";
 
     public override void Awake()
@@ -46,8 +44,6 @@ public class ObjectGrabbable : Interactable
             objectRigidBody.MovePosition(newPosition);
         }
     }
-
-
 
 public override void OnFocus()
     {
@@ -88,13 +84,13 @@ public override void OnFocus()
 
     private void OnCollisionEnter(Collision collision)
     {
-        // Check if the object is dropped and has a collider underneath
+        // check if the object is dropped and has a collider underneath
         if (objectGrabPointTransform == null && collision.contacts.Length > 0)
         {
-            // Check if the collided object has the specified tag
+            // check if the collided object has the specified tag
             if (collision.collider.CompareTag(snapToTag))
             {
-                // Snap the object to the center of the collided object
+                // snap the object to the center of the collided object
                 SnapToCenter(collision.collider);
             }
         }
@@ -102,7 +98,7 @@ public override void OnFocus()
 
     private void SnapToCenter(Collider targetCollider)
     {
-        // Set the object's position to the center of the target object
+        // set the objects position to the center of the target object
         objectRigidBody.MovePosition(targetCollider.bounds.center);
     }
 }
