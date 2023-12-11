@@ -78,7 +78,7 @@ public class FlickerControl : MonoBehaviour
             flickeringObject.SetActive(true);
 
             // Randomly change the position of the flickering object within specified ranges
-            float randomX = Random.Range(-5f, 5f);
+            float randomX = Random.Range(-2f, 2.5f);
             float randomZ = Random.Range(7f, 20.5f);
 
             // Apply the new position relative to the current position
