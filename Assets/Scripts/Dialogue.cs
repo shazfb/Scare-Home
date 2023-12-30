@@ -6,11 +6,12 @@ public class Dialogue : MonoBehaviour
 {
     public TextMeshProUGUI textComponent;
     public string[] lines;
+    public AudioClip[] audioClips; // Add your audio clips here
     public float textSpeed;
 
     private int index;
-
     private bool inDialogue { get; set; }
+    private AudioSource audioSource;
 
     public bool IsInDialogue()
     {
@@ -20,6 +21,7 @@ public class Dialogue : MonoBehaviour
     void Start()
     {
         textComponent.text = string.Empty;
+        audioSource = GetComponent<AudioSource>();
         StartDialogue();
     }
 
@@ -41,9 +43,10 @@ public class Dialogue : MonoBehaviour
 
     public void StartDialogue()
     {
-        inDialogue = true; 
+        inDialogue = true;
         index = 0;
         StartCoroutine(TypeLine());
+        PlayAudio(); // Play audio when dialogue starts
     }
 
     IEnumerator TypeLine()
@@ -53,6 +56,7 @@ public class Dialogue : MonoBehaviour
             textComponent.text += c;
             yield return new WaitForSeconds(textSpeed);
         }
+        StopAudio(); // Stop audio when the line is complete
     }
 
     private void NextLine()
@@ -62,6 +66,7 @@ public class Dialogue : MonoBehaviour
             index++;
             textComponent.text = string.Empty;
             StartCoroutine(TypeLine());
+            PlayAudio(); // Play audio for the next line
         }
         else
         {
@@ -71,7 +76,24 @@ public class Dialogue : MonoBehaviour
 
     private void EndDialogue()
     {
-        inDialogue = false; 
+        inDialogue = false;
         gameObject.SetActive(false);
+    }
+
+    private void PlayAudio()
+    {
+        if (audioClips != null && audioClips.Length > index)
+        {
+            audioSource.clip = audioClips[index];
+            audioSource.Play();
+        }
+    }
+
+    private void StopAudio()
+    {
+        if (audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
     }
 }
