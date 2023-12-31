@@ -1,11 +1,10 @@
 using System.Collections;
 using UnityEngine;
 
-public class InteractableObjects : Interactable
+public class Microwave : Interactable
 {
     private bool isOn = false;
     private bool canBeInteractedWith = true;
-    //private Animator anim;
     private Light interactableLight;
     private AudioSource interactableAudio;
 
@@ -26,7 +25,6 @@ public class InteractableObjects : Interactable
 
     private void Start()
     {
-        // anim = GetComponent<Animator>(); 
         interactableAudio = GetComponent<AudioSource>();
         interactableAudio.enabled = isOn;
 
@@ -54,7 +52,7 @@ public class InteractableObjects : Interactable
         }
         else
         {
-            Debug.LogError("doorGameObject reference not set. Make sure to assign the GameObject with the Door script in the Inspector.");
+            Debug.LogError("doorGameObject reference not set. Assign the GameObject with the Door script in the Inspector.");
         }
 
         if (animatorGameObject != null)
@@ -67,7 +65,7 @@ public class InteractableObjects : Interactable
         }
         else
         {
-            Debug.LogError("animatorGameObject reference not set. Make sure to assign the GameObject with the Animator component in the Inspector.");
+            Debug.LogError("animatorGameObject reference not set. Assign the GameObject with the Animator component in the Inspector.");
         }
     }
 
@@ -125,8 +123,6 @@ public class InteractableObjects : Interactable
 
             Vector3 objectTransformDirection = transform.TransformDirection(Vector3.forward);
             Vector3 playerTransformDirection = FirstPersonController.instance.transform.position - transform.position;
-            // anim.SetFloat("dot", Vector3.Dot(objectTransformDirection, playerTransformDirection)); 
-            // anim.SetBool("isOn", isOn); 
             InteractText.SetActive(false);
 
             if (otherAnimator != null)

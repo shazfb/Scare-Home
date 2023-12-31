@@ -38,7 +38,7 @@ public class ObjectInteraction : Interactable
         buttontextObject.SetActive(false);
     }
 
-    void ToggleObjects()
+    public void ToggleObjects()
     {
         if (objectToEnable != null && objectToDisable != null)
         {
@@ -64,7 +64,7 @@ public class ObjectInteraction : Interactable
         }
     }
 
-    void DisableTextObject()
+    public void DisableTextObject()
     {
         if (textObject != null)
         {

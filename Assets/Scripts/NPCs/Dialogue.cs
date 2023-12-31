@@ -6,7 +6,7 @@ public class Dialogue : MonoBehaviour
 {
     public TextMeshProUGUI textComponent;
     public string[] lines;
-    public AudioClip[] audioClips; // Add your audio clips here
+    public AudioClip[] audioClips; 
     public float textSpeed;
 
     private int index;
@@ -18,14 +18,14 @@ public class Dialogue : MonoBehaviour
         return inDialogue;
     }
 
-    void Start()
+    private void Start()
     {
         textComponent.text = string.Empty;
         audioSource = GetComponent<AudioSource>();
         StartDialogue();
     }
 
-    void Update()
+    private void Update()
     {
         if (Input.GetMouseButton(0))
         {
@@ -46,7 +46,7 @@ public class Dialogue : MonoBehaviour
         inDialogue = true;
         index = 0;
         StartCoroutine(TypeLine());
-        PlayAudio(); // Play audio when dialogue starts
+        PlayAudio(); 
     }
 
     IEnumerator TypeLine()
@@ -56,7 +56,7 @@ public class Dialogue : MonoBehaviour
             textComponent.text += c;
             yield return new WaitForSeconds(textSpeed);
         }
-        StopAudio(); // Stop audio when the line is complete
+        StopAudio(); 
     }
 
     private void NextLine()
@@ -66,7 +66,7 @@ public class Dialogue : MonoBehaviour
             index++;
             textComponent.text = string.Empty;
             StartCoroutine(TypeLine());
-            PlayAudio(); // Play audio for the next line
+            PlayAudio(); 
         }
         else
         {

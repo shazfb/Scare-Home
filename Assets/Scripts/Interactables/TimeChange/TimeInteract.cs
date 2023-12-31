@@ -17,7 +17,7 @@ public class TimeInteract : Interactable
     public float maxVolume = 1.0f;
 
 
-    void Start()
+    private void Start()
     {
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = doorbangSound;
@@ -74,12 +74,12 @@ public class TimeInteract : Interactable
         {
             backgroundAudio.Play();
             
-            InvokeRepeating("RandomizeBackgroundVolume", 2.0f, 2.0f);
+            InvokeRepeating("RandomiseBackgroundVolume", 2.0f, 2.0f);
         }
     }
 
 
-    private void RandomizeBackgroundVolume()
+    private void RandomiseBackgroundVolume()
     {
         
         float randomVolume = Random.Range(minVolume, maxVolume);
@@ -94,18 +94,7 @@ public class TimeInteract : Interactable
         {
             upstairsAudio.Play();
 
-            //        InvokeRepeating("RandomizeUpstairsVolume", 2.0f, 2.0f);
-            //    }
         }
     }
-
-    //private void RandomizeUpstairsVolume()
-    //{
-        
-    //    float randomVolume = Random.Range(minVolume, maxVolume);
-
-     
-    //    upstairsAudio.volume = randomVolume;
-    //}
 
 }

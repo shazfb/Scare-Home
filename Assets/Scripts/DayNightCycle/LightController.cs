@@ -53,19 +53,25 @@ public class LightController : MonoBehaviour
 
     public void DimLights()
     {
-        // dim all lights
-        foreach (Light light in lights)
-        {
-            light.intensity = originalIntensity * dimmingFactor;
-        }
+            foreach (Light light in lights)
+            {
+                if (light != null)  
+                {
+                    light.intensity = originalIntensity * dimmingFactor;
+                }
+            }
+        
     }
 
-    void RestoreLights()
-    {
-        // restore all lights
-        foreach (Light light in lights)
-        {
-            light.intensity = originalIntensity;
-        }
+    public void RestoreLights()
+    {        
+            foreach (Light light in lights)
+            {
+                if (light != null)  
+                {
+                    light.intensity = originalIntensity;
+                }
+            }        
     }
+ 
 }

@@ -25,7 +25,7 @@ public class TimeController : MonoBehaviour
     private TimeSpan sunriseTime;
     private TimeSpan sunsetTime;
 
-    void Start()
+    private void Start()
     {
         currentTime = DateTime.Now.Date + TimeSpan.FromHours(startHour);
 
@@ -34,7 +34,7 @@ public class TimeController : MonoBehaviour
         numberOfDays = 1;
     }
 
-    void Update()
+    private void Update()
     {
         UpdateTimeOfDay();
         RotateSun();
