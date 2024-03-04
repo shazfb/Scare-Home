@@ -34,7 +34,6 @@ public class FlickerControl : MonoBehaviour
                     yield return StartCoroutine(FlickeringLight());
                     currentFlickerCount++;
 
-                    // check if this is the middle flicker
                     if (currentFlickerCount == flickerCount / 2)
                     {
                         StartCoroutine(FlickerRandomObject());
@@ -42,7 +41,7 @@ public class FlickerControl : MonoBehaviour
                 }
             }
 
-            yield return new WaitForSeconds(Random.Range(1f, 10f)); // time delay between flickers
+            yield return new WaitForSeconds(Random.Range(1f, 10f)); 
         }
     }
 
